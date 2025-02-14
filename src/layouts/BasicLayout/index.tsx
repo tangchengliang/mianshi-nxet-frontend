@@ -14,6 +14,8 @@ import GlobalFooter from "@/components/GlobalFooter";
 import { menus } from "../../../config/menu";
 import getAccessibleMenus from "@/access/menuAccess";
 import "./index.css";
+import {useSelector} from "react-redux";
+import {RootState} from "@/stores";
 
 /**
  * 搜索条
@@ -59,7 +61,7 @@ interface Props {
 export default function BasicLayout({ children }: Props) {
   const pathname = usePathname();
   // 当前登录用户
-  // const loginUser = useSelector((state: RootState) => state.loginUser);
+  const loginUser = useSelector((state: RootState) => state.loginUser);
 
   return (
     <div
@@ -84,9 +86,9 @@ export default function BasicLayout({ children }: Props) {
           pathname,
         }}
         avatarProps={{
-          src: "/assets/logo.jpg",
+          src: loginUser.userAvatar|| "/assets/logo.jpg",
           size: "small",
-          title: "小黑子",
+          title: loginUser.userName || "小黑子",
           render: (props, dom) => {
             return (
               <Dropdown
