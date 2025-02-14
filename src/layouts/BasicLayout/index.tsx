@@ -6,7 +6,7 @@ import {
 } from "@ant-design/icons";
 import { ProLayout } from "@ant-design/pro-components";
 import { Dropdown, Input } from "antd";
-import React from "react";
+import React, {useState} from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -62,7 +62,7 @@ export default function BasicLayout({ children }: Props) {
   const pathname = usePathname();
   // 当前登录用户
   const loginUser = useSelector((state: RootState) => state.loginUser);
-
+    // const [text, setText] = useState<string>('');
   return (
     <div
       id="basicLayout"
@@ -144,6 +144,8 @@ export default function BasicLayout({ children }: Props) {
           </Link>
         )}
       >
+          {/*<MdEditor value={text} onChange={setText} />*/}
+          {/*<MdViewer value={text} />*/}
         {children}
       </ProLayout>
     </div>
