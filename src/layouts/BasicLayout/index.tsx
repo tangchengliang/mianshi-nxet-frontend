@@ -84,7 +84,7 @@ export default function BasicLayout({ children }: Props) {
           pathname,
         }}
         avatarProps={{
-          src:  "/assets/logo.jpg",
+          src: "/assets/logo.jpg",
           size: "small",
           title: "小黑子",
           render: (props, dom) => {
