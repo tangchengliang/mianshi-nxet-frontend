@@ -1,5 +1,5 @@
 import { menus } from "../../config/menu";
-// import checkAccess from "@/access/checkAccess";
+import checkAccess from "@/access/checkAccess";
 
 /**
  * 获取有权限、可访问的菜单（递归）
@@ -8,9 +8,9 @@ import { menus } from "../../config/menu";
  */
 const getAccessibleMenus = (loginUser :any, menuItems = menus) => {
   return menuItems.filter((item) => {
-    // if (!checkAccess(loginUser, item.access)) {
-    //   return false;
-    // }
+    if (!checkAccess(loginUser, item.access)) {
+      return false;
+    }
     if (item.children) {
       item.children = getAccessibleMenus(loginUser, item.children);
     }

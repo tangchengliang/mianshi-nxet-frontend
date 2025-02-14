@@ -20,18 +20,18 @@ export const menus = [
     path: "/admin",
     name: "管理",
     icon: <CrownOutlined />,
-    access: ACCESS_ENUM.ADMIN,
+    access: ACCESS_ENUM.ADMIN, // 添加权限
     children: [
       {
         path: "/admin/user",
         name: "用户管理",
-        access: ACCESS_ENUM.ADMIN,
+        access: ACCESS_ENUM.ADMIN, // 添加权限
       },
     ],
   },
 ] as MenuDataItem[];
 
-// 根据全部路径查找菜单
+//  根据全部路径查找菜单
 export const findAllMenuItemByPath = (path: string): MenuDataItem | null => {
   return findMenuItemByPath(menus, path);
 };
@@ -45,6 +45,7 @@ export const findMenuItemByPath = (
     if (menu.path === path) {
       return menu;
     }
+    // 查找子菜单
     if (menu.children) {
       const matchedMenuItem = findMenuItemByPath(menu.children, path);
       if (matchedMenuItem) {

@@ -1,5 +1,5 @@
 /**
- * 权限定义
+ * 权限定义枚举
  */
 const ACCESS_ENUM = {
   NOT_LOGIN: "notLogin",
