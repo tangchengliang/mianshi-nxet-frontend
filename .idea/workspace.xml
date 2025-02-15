@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e3da3d1-0726-4c6f-bd4c-1ec34177f334" name="Changes" comment="feat: 全局权限管理，菜单显示/隐藏">
-      <change afterPath="$PROJECT_DIR$/src/app/user/login/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/user/login/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/user/register/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/user/register/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constants/user.ts" afterDir="false" />
+    <list default="true" id="9e3da3d1-0726-4c6f-bd4c-1ec34177f334" name="Changes" comment="feat: 用户登录注册页面">
+      <change afterPath="$PROJECT_DIR$/src/app/admin/user/components/CreateModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/admin/user/components/UpdateModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/BasicLayout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/BasicLayout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stores/loginUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/loginUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/user/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/user/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/user/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/user/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +37,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/project/java/mianshiya/mianshi-nxet-frontend/src",
+    "last_opened_file_path": "D:/project/java/mianshiya/mianshi-nxet-frontend/src/app/admin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,11 +53,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\java\mianshiya\mianshi-nxet-frontend\src\app\admin" />
       <recent name="D:\project\java\mianshiya\mianshi-nxet-frontend\src" />
       <recent name="D:\project\java\mianshiya\mianshi-nxet-frontend\src\app" />
       <recent name="D:\project\mianshi\mianshi-next-frontend\src\components" />
       <recent name="D:\project\mianshi\mianshi-next-frontend\src\app\admin\user" />
-      <recent name="D:\project\mianshi\mianshi-next-frontend\src\access" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -111,7 +106,7 @@
       <workItem from="1739431987826" duration="2422000" />
       <workItem from="1739496735436" duration="11567000" />
       <workItem from="1739535172850" duration="2063000" />
-      <workItem from="1739604376547" duration="4806000" />
+      <workItem from="1739604376547" duration="6191000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 静态菜单栏和底部栏">
       <option name="closed" value="true" />
@@ -153,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739517101613</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: 用户登录注册页面">
+      <option name="closed" value="true" />
+      <created>1739609906601</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1739609906601</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +167,7 @@
     <MESSAGE value="feat: openAI生成api请求代码" />
     <MESSAGE value="feat: 全局状态管理-用户登录" />
     <MESSAGE value="feat: 全局权限管理，菜单显示/隐藏" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 全局权限管理，菜单显示/隐藏" />
+    <MESSAGE value="feat: 用户登录注册页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 用户登录注册页面" />
   </component>
 </project>
