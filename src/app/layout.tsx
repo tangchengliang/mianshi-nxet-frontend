@@ -1,14 +1,13 @@
 "use client";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import "./globals.css";
 import BasicLayout from "@/layouts/BasicLayout";
 import React, { useCallback, useEffect } from "react";
 import { Provider, useDispatch } from "react-redux";
 import store, { AppDispatch } from "@/stores";
 import { getLoginUserUsingGet } from "@/api/userController";
-import { setLoginUser } from "@/stores/loginUser";
 import AccessLayout from "@/access/AccessLayout";
-import ACCESS_ENUM from "@/access/accessEnum";
+import { setLoginUser } from "@/stores/loginUser";
+import "./globals.css";
 
 /**
  * 初始化布局（多封装一层，使得能调用 useDispatch）
@@ -27,7 +26,7 @@ const InitLayout: React.FC<
     // 获取用户信息
     const res = await getLoginUserUsingGet();
     if (res.data) {
-      // dispatch(setLoginUser(res.data));
+      dispatch(setLoginUser(res.data));
     } else {
       // 测试代码，实际可删除
       // setTimeout(() => {
