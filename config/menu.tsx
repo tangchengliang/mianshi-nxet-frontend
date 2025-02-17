@@ -27,6 +27,11 @@ export const menus = [
         name: "用户管理",
         access: ACCESS_ENUM.ADMIN, // 添加权限
       },
+      {
+        path: "/admin/bank",
+        name: "题库管理",
+        access: ACCESS_ENUM.ADMIN, // 添加权限
+      },
     ],
   },
 ] as MenuDataItem[];
