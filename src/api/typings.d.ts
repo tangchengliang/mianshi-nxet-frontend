@@ -526,7 +526,7 @@ declare namespace API {
     description?: string;
     id?: number;
     picture?: string;
-    questionPage?: PageQuestion_;
+    questionPage?: PageQuestionVO_;
     title?: string;
     updateTime?: string;
     user?: UserVO;
@@ -552,7 +552,7 @@ declare namespace API {
     searchText?: string;
     sortField?: string;
     sortOrder?: string;
-    tags?: string[];
+    tagList?: string[];
     title?: string;
     userId?: number;
   };
