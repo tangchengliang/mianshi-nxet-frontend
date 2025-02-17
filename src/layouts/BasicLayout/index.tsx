@@ -1,56 +1,21 @@
 "use client";
-import {
-  GithubFilled,
-  LogoutOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { GithubFilled, LogoutOutlined } from "@ant-design/icons";
 import { ProLayout } from "@ant-design/pro-components";
-import { Dropdown, Input, message } from "antd";
-import React, { useState } from "react";
+import { Dropdown, message } from "antd";
+import React from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import GlobalFooter from "@/components/GlobalFooter";
 import { menus } from "../../../config/menu";
-import getAccessibleMenus from "@/access/menuAccess";
-import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/stores";
+import getAccessibleMenus from "@/access/menuAccess";
 import { userLogoutUsingPost } from "@/api/userController";
 import { setLoginUser } from "@/stores/loginUser";
 import { DEFAULT_USER } from "@/constants/user";
-
-/**
- * 搜索条
- * @constructor
- */
-const SearchInput = () => {
-  return (
-    <div
-      key="SearchOutlined"
-      aria-hidden
-      style={{
-        display: "flex",
-        alignItems: "center",
-        marginInlineEnd: 24,
-      }}
-      onMouseDown={(e) => {
-        e.stopPropagation();
-        e.preventDefault();
-      }}
-    >
-      <Input
-        style={{
-          borderRadius: 4,
-          marginInlineEnd: 12,
-        }}
-        prefix={<SearchOutlined />}
-        placeholder="搜索题目"
-        variant="borderless"
-      />
-    </div>
-  );
-};
+import SearchInput from "@/layouts/BasicLayout/components/SearchInput";
+import "./index.css";
 
 interface Props {
   children: React.ReactNode;
@@ -67,6 +32,7 @@ export default function BasicLayout({ children }: Props) {
   const loginUser = useSelector((state: RootState) => state.loginUser);
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
+
   /**
    * 用户注销
    */
@@ -80,6 +46,7 @@ export default function BasicLayout({ children }: Props) {
       message.error("操作失败，" + e.message);
     }
   };
+
   return (
     <div
       id="basicLayout"
@@ -147,7 +114,7 @@ export default function BasicLayout({ children }: Props) {
             <SearchInput key="search" />,
             <a
               key="github"
-              href="https://github.com/liyupi/mianshiya-next"
+              href="https://github.com/tangchengliang/mianshi-nxet-frontend"
               target="_blank"
             >
               <GithubFilled key="GithubFilled" />
@@ -178,8 +145,6 @@ export default function BasicLayout({ children }: Props) {
           </Link>
         )}
       >
-        {/*<MdEditor value={text} onChange={setText} />*/}
-        {/*<MdViewer value={text} />*/}
         {children}
       </ProLayout>
     </div>
