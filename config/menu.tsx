@@ -32,6 +32,11 @@ export const menus = [
         name: "题库管理",
         access: ACCESS_ENUM.ADMIN, // 添加权限
       },
+      {
+        path: "/admin/question",
+        name: "題目管理",
+        access: ACCESS_ENUM.ADMIN, // 添加权限
+      },
     ],
   },
 ] as MenuDataItem[];
