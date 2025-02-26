@@ -563,7 +563,7 @@ declare namespace API {
     searchText?: string;
     sortField?: string;
     sortOrder?: string;
-    tagList?: string[];
+    tags?: string[];
     title?: string;
     userId?: number;
   };
