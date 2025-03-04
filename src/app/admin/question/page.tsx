@@ -9,12 +9,12 @@ import {
 import { PlusOutlined } from "@ant-design/icons";
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { PageContainer, ProTable } from "@ant-design/pro-components";
-import {Button, message, Popconfirm, Space, Table, Typography} from "antd";
+import { Button, message, Popconfirm, Space, Table, Typography } from "antd";
 import React, { useRef, useState } from "react";
 import TagList from "@/components/TagList";
 import MdEditor from "@/components/MdEditor";
 import UpdateBankModal from "@/app/admin/question/components/UpdateBankModal";
-import './index.css';
+import "./index.css";
 import BatchAddQuestionsToBankModal from "@/app/admin/question/components/BatchAddQuestionsToBankModal";
 import BatchRemoveQuestionsFromBankModal from "@/app/admin/question/components/BatchRemoveQuestionsFromBankModal";
 
@@ -47,7 +47,7 @@ const QuestionAdminPage: React.FC = () => {
   ] = useState<boolean>(false);
   // 当前选中的题目 id 列表
   const [selectedQuestionIdList, setSelectedQuestionIdList] = useState<
-      number[]
+    number[]
   >([]);
 
   /**
@@ -229,70 +229,79 @@ const QuestionAdminPage: React.FC = () => {
           defaultSelectedRowKeys: [1],
         }}
         tableAlertRender={({
-                             selectedRowKeys,
-                             selectedRows,
-                             onCleanSelected,
-                           }) => {
+          selectedRowKeys,
+          selectedRows,
+          onCleanSelected,
+        }) => {
           console.log(selectedRowKeys, selectedRows);
           return (
-              <Space size={24}>
+            <Space size={24}>
               <span>
                 已选 {selectedRowKeys.length} 项
                 <a style={{ marginInlineStart: 8 }} onClick={onCleanSelected}>
                   取消选择
                 </a>
               </span>
-              </Space>
+            </Space>
           );
         }}
         tableAlertOptionRender={({
-                                   selectedRowKeys,
-                                   selectedRows,
-                                   onCleanSelected,
-                                 }) => {
+          selectedRowKeys,
+          selectedRows,
+          onCleanSelected,
+        }) => {
           return (
-              <Space size={16}>
+            <Space size={16}>
+              <Button
+                onClick={() => {
+                  // 打开弹窗
+                  setSelectedQuestionIdList(selectedRowKeys as number[]);
+                  setBatchAddQuestionsToBankModalVisible(true);
+                }}
+              >
+                批量向题库添加题目
+              </Button>
+              <Button
+                onClick={() => {
+                  // 打开弹窗
+                  setSelectedQuestionIdList(selectedRowKeys as number[]);
+                  setBatchRemoveQuestionsFromBankModalVisible(true);
+                }}
+              >
+                批量从题库移除题目
+              </Button>
+              <Popconfirm
+                title="确认删除"
+                description="你确定要删除这些题目么？"
+                onConfirm={() => {
+                  // 批量删除
+                  handleBatchDelete(selectedRowKeys as number[]);
+                }}
+                okText="确认"
+                cancelText="取消"
+              >
                 <Button
-                    onClick={() => {
-                      // 打开弹窗
-                      setSelectedQuestionIdList(selectedRowKeys as number[]);
-                      setBatchAddQuestionsToBankModalVisible(true);
-                    }}
+                  danger
+                  onClick={() => {
+                    // 打开弹窗
+                  }}
                 >
-                  批量向题库添加题目
+                  批量删除题目
                 </Button>
-                <Button
-                    onClick={() => {
-                      // 打开弹窗
-                      setSelectedQuestionIdList(selectedRowKeys as number[]);
-                      setBatchRemoveQuestionsFromBankModalVisible(true);
-                    }}
-                >
-                  批量从题库移除题目
-                </Button>
-                <Popconfirm
-                    title="确认删除"
-                    description="你确定要删除这些题目么？"
-                    onConfirm={() => {
-                      // 批量删除
-                      handleBatchDelete(selectedRowKeys as number[]);
-                    }}
-                    okText="确认"
-                    cancelText="取消"
-                >
-                  <Button
-                      danger
-                      onClick={() => {
-                        // 打开弹窗
-                      }}
-                  >
-                    批量删除题目
-                  </Button>
-                </Popconfirm>
-              </Space>
+              </Popconfirm>
+            </Space>
           );
         }}
         toolBarRender={() => [
+          <Button
+            type="primary"
+            ghost
+            key="primary"
+            href="/admin/question/ai"
+            target="_blank"
+          >
+            <PlusOutlined /> AI 生成题目
+          </Button>,
           <Button
             type="primary"
             key="primary"
@@ -354,24 +363,24 @@ const QuestionAdminPage: React.FC = () => {
         }}
       />
       <BatchAddQuestionsToBankModal
-          visible={batchAddQuestionsToBankModalVisible}
-          questionIdList={selectedQuestionIdList}
-          onSubmit={() => {
-            setBatchAddQuestionsToBankModalVisible(false);
-          }}
-          onCancel={() => {
-            setBatchAddQuestionsToBankModalVisible(false);
-          }}
+        visible={batchAddQuestionsToBankModalVisible}
+        questionIdList={selectedQuestionIdList}
+        onSubmit={() => {
+          setBatchAddQuestionsToBankModalVisible(false);
+        }}
+        onCancel={() => {
+          setBatchAddQuestionsToBankModalVisible(false);
+        }}
       />
       <BatchRemoveQuestionsFromBankModal
-          visible={batchRemoveQuestionsFromBankModalVisible}
-          questionIdList={selectedQuestionIdList}
-          onSubmit={() => {
-            setBatchRemoveQuestionsFromBankModalVisible(false);
-          }}
-          onCancel={() => {
-            setBatchRemoveQuestionsFromBankModalVisible(false);
-          }}
+        visible={batchRemoveQuestionsFromBankModalVisible}
+        questionIdList={selectedQuestionIdList}
+        onSubmit={() => {
+          setBatchRemoveQuestionsFromBankModalVisible(false);
+        }}
+        onCancel={() => {
+          setBatchRemoveQuestionsFromBankModalVisible(false);
+        }}
       />
     </PageContainer>
   );
