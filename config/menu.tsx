@@ -17,6 +17,10 @@ export const menus = [
     name: "题目",
   },
   {
+    path: "/mockinterview",
+    name: "AI 模拟面试",
+  },
+  {
     path: "/admin",
     name: "管理",
     icon: <CrownOutlined />,

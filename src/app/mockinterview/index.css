@@ -1,0 +1,31 @@
+/* 弹窗样式 */
+.ant-modal-content {
+    border-radius: 8px;
+}
+
+.ant-modal-header {
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.ant-modal-footer {
+    border-top: 1px solid #e8e8e8;
+    padding: 16px 24px;
+}
+
+/* 表单样式 */
+.ant-form-item {
+    margin-bottom: 16px;
+}
+
+.ant-form-item-label {
+    font-weight: bold;
+}
+
+.ant-input {
+    border-radius: 4px;
+}
+
+/* 按钮样式 */
+.ant-btn {
+    border-radius: 4px;
+}

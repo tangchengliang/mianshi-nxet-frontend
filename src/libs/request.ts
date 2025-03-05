@@ -5,8 +5,8 @@ import axios from "axios";
 const DEV_BASE_URL = "http://localhost:8101";
 const PROD_BASE_URL = "http://47.108.164.128";
 const myAxios = axios.create({
-    baseURL: PROD_BASE_URL,
-    timeout: 10000,
+    baseURL: DEV_BASE_URL,
+    timeout: 60000,
     withCredentials: true,
 });
 
