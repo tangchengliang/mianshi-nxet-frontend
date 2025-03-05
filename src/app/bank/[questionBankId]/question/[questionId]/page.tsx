@@ -1,8 +1,9 @@
-"use server";
+"use client"
+import React, { useEffect, useState } from "react";
 import { Flex, Menu, message } from "antd";
 import { getQuestionBankVoByIdUsingGet } from "@/api/questionBankController";
-import Title from "antd/es/typography/Title";
 import { getQuestionVoByIdUsingGet } from "@/api/questionController";
+import Title from "antd/es/typography/Title";
 import Sider from "antd/es/layout/Sider";
 import { Content } from "antd/es/layout/layout";
 import QuestionCard from "@/components/QuestionCard";
@@ -13,51 +14,80 @@ import "./index.css";
  * 题库题目详情页
  * @constructor
  */
-export default async function BankQuestionPage({ params }) {
+export default function BankQuestionPage({ params }) {
   const { questionBankId, questionId } = params;
+  const [bank, setBank] = useState(null);
+  const [question, setQuestion] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // 获取题库详情
-  let bank = undefined;
-  try {
-    const res = await getQuestionBankVoByIdUsingGet({
-      id: questionBankId,
-      needQueryQuestionList: true,
-      // 可以自行扩展为分页实现
-      pageSize: 200,
-    });
-    bank = res.data;
-  } catch (e) {
-    message.error("获取题库列表失败，" + e.message);
-  }
-  // 错误处理
-  if (!bank) {
-    return <div>获取题库详情失败，请刷新重试</div>;
+  useEffect(() => {
+    let didCancel = false;
+
+    const fetchBank = async () => {
+      try {
+        const res = await getQuestionBankVoByIdUsingGet({
+          id: questionBankId,
+          needQueryQuestionList: true,
+          pageSize: 200,
+        });
+        if (!didCancel) {
+          setBank(res.data);
+        }
+      } catch (e) {
+        if (!didCancel) {
+          setError("获取题库列表失败，" + e.message);
+        }
+      }
+    };
+
+    const fetchQuestion = async () => {
+      try {
+        const res = await getQuestionVoByIdUsingGet({
+          id: questionId,
+        });
+        if (!didCancel) {
+          setQuestion(res.data);
+        }
+      } catch (e) {
+        if (!didCancel) {
+          setError("获取题目详情失败，" + e.message);
+        }
+      }
+    };
+
+    fetchBank();
+    fetchQuestion();
+
+    // 清理函数，防止在组件卸载或选项更改后设置状态
+    return () => {
+      didCancel = true;
+    };
+  }, [questionBankId, questionId]); // 依赖这些参数来重新获取数据
+
+  useEffect(() => {
+    setLoading(false); // 数据加载完成后设置加载状态为false
+  }, [bank, question]); // 依赖bank和question状态
+
+  if (loading) {
+    return <div>加载中...</div>;
   }
 
-  // 获取题目详情
-  let question = undefined;
-  try {
-    const res = await getQuestionVoByIdUsingGet({
-      id: questionId,
-    });
-    question = res.data;
-  } catch (e) {
-    message.error("获取题目详情失败，" + e.message);
+  if (error) {
+    return <div>{error}</div>;
   }
-  // 错误处理
-  if (!question) {
-    return <div>获取题目详情失败，请刷新重试</div>;
+
+  if (!bank || !question) {
+    return <div>获取数据失败，请刷新重试</div>;
   }
 
   // 题目菜单列表
-  const questionMenuItemList = (bank.questionPage?.records || []).map((q) => {
-    return {
-      label: (
-        <Link href={`/bank/${questionBankId}/question/${q.id}`}>{q.title}</Link>
-      ),
-      key: q.id,
-    };
-  });
+  const questionMenuItemList = (bank.questionPage?.records || []).map((q) => ({
+    label: (
+      <Link href={`/bank/${questionBankId}/question/${q.id}`}>{q.title}</Link>
+    ),
+    key: q.id,
+  }));
 
   return (
     <div id="bankQuestionPage">
